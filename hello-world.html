@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>heIlo-world</title>
+    <title>hello-world</title>
     <style type="text/css">
         body {
             text-align: center;
@@ -33,16 +33,36 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
         $(function() {
-            var r = 7;
-            var c = 52;
+            var r = 7; // rows
+            var c = 52; // columns
+            // input
             for (var i=0; i<r; i++) {
                 $('table').append('<tr></tr>');
-                for(var j=0; j<c; j++){
+                for(var j=0; j<c; j++) {
                     $('tr:last-child').append('<td></td>');
                 }
             }
-            $("table tr td").on('click', function() {
+            var isDown = false;
+            $("table tr td").mousedown(function() {
+                isDown = true;
+            }).mouseup(function() {
+                isDown = false;
+            }).mouseover(function() {
+                if(isDown) {
+                    $(this).toggleClass("true");
+                }
+            }).mousedown(function() {
                 $(this).toggleClass("true");
+            });
+            //output
+            $("table tr td").mouseup(function() {
+                var d = 1; // day
+                for (var i=0; i<c; i++) {
+                    for(var j=0; j<r; j++) {
+                        istrue = $('table tr:nth-child(' + (j+1) + ') td:nth-child(' + (i+1) + ')').hasClass('true');
+                        console.log(d++ + ':' + istrue);
+                    }
+                }
             });
         });
     </script>
