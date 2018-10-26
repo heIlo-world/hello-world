@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>heIlo-world</title>
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        tr {
+            height: 20px;
+        }
+        td {
+            width: 20px;
+        }
+        table:hover {
+            cursor: pointer;
+        }
+        td.true {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <table></table>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function() {
+            var r = 7;
+            var c = 52;
+            for (var i=0; i<r; i++) {
+                $('table').append('<tr></tr>');
+                for(var j=0; j<c; j++){
+                    $('tr:last-child').append('<td></td>');
+                }
+            }
+            $("table tr td").on('click', function() {
+                $(this).toggleClass("true");
+            });
+        });
+    </script>
+</body>
+</html>
