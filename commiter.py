@@ -1,4 +1,3 @@
-import base64
 from github import Github, InputGitTreeElement
 from auth import auth
 
