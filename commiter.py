@@ -12,7 +12,7 @@ def commiter(dirPath):
 
   fileList = ['{}/text.txt'.format(dirPath),]
   fileNames = ['text.txt',]
-  commitMessage = '-'
+  commitMessage = 'draw pixel'
   masterRef = repo.get_git_ref('heads/master')
   masterSha = masterRef.object.sha
   baseTree = repo.get_git_tree(masterSha)

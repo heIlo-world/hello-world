@@ -4,4 +4,4 @@ RUN pip3 install \
     PyGithub \
     schedule
 
-CMD [ "python3", "/app/app.py" ]
+CMD [ "python3", "-u", "/app/app.py" ]
