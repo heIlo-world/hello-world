@@ -18,15 +18,18 @@ def onTheDay():
     for idx in range(len(days)):
       dayCount = 'p{}'.format(idx + 1)
 
+      print(dayCount)
+
       if dayCount not in alreadyDone:
         if days[dayCount]:
-          print('today is commit day')
+          print('today is commit day...')
           commiter(cwd)
 
         alreadyDoneFile.write('{};'.format(dayCount))
         break
 
-schedule.every().day.at('13:37').do(onTheDay)
+schedule.every().day.at('16:00').do(onTheDay)
+
 while True:
   schedule.run_pending()
   print('sleeping...')
