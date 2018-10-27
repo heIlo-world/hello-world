@@ -8,3 +8,8 @@ def auth():
     'passw': ''
   }
 ```
+# docker
+
+```console
+docker-compose -p hello-world up -d
+```

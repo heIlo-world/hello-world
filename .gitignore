@@ -2,3 +2,5 @@ __pycache__
 auth.py
 .DS_Store
 .vscode
+autoexec.bat
+command.com

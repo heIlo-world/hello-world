@@ -6,8 +6,8 @@ import schedule
 import json
 
 cwd = getcwd()
-alreadyDoneFile = open('./alreadydone.txt', 'a')
-alreadyDone = open('./alreadydone.txt', 'r').read().split(';')
+alreadyDoneFile = open('./done.txt', 'a')
+alreadyDone = open('./done.txt', 'r').read().split(';')
 
 def onTheDay():
   with open('./pixels.json') as jason:
@@ -24,9 +24,7 @@ def onTheDay():
         alreadyDoneFile.write('{};'.format(dayCount))
         break
 
-
 schedule.every().day.at('12:00').do(onTheDay)
 while True:
   schedule.run_pending()
-  sleep(2)
-
+  sleep(30)
