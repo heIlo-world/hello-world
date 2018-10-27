@@ -1,6 +1,5 @@
 import base64
 from github import Github, InputGitTreeElement
-from os import getcwd
 from auth import auth
 
 cred = auth()
@@ -14,7 +13,7 @@ def commiter(dirPath):
 
 	fileList = ['{}/text.txt'.format(dirPath),]
 	fileNames = ['text.txt',]
-	commitMessage = 'first commit'
+	commitMessage = '-'
 	masterRef = repo.get_git_ref('heads/master')
 	masterSha = masterRef.object.sha
 	baseTree = repo.get_git_tree(masterSha)
@@ -32,7 +31,3 @@ def commiter(dirPath):
 	parent = repo.get_git_commit(masterSha)
 	commit = repo.create_git_commit(commitMessage, tree, [parent])
 	masterRef.edit(commit.sha)
-
-
-cwd = getcwd()
-commiter(cwd)
