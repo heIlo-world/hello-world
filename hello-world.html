@@ -26,10 +26,16 @@
         td.true {
             background-color: #000;
         }
+        textarea {
+            width: 1040px;
+            height: 10em;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
     <table></table>
+    <textarea>{}</textarea>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
         $(function() {
@@ -37,9 +43,9 @@
             var c = 52; // columns
             // input
             for (var i=0; i<r; i++) {
-                $('table').append('<tr></tr>');
+                $("table").append("<tr></tr>");
                 for(var j=0; j<c; j++) {
-                    $('tr:last-child').append('<td></td>');
+                    $("tr:last-child").append("<td></td>");
                 }
             }
             var isDown = false;
@@ -56,11 +62,27 @@
             });
             //output
             $("table tr td").mouseup(function() {
+                jsonObj = {};
                 var d = 1; // day
                 for (var i=0; i<c; i++) {
                     for(var j=0; j<r; j++) {
-                        istrue = $('table tr:nth-child(' + (j+1) + ') td:nth-child(' + (i+1) + ')').hasClass('true');
-                        console.log(d++ + ':' + istrue);
+                        istrue = $("table tr:nth-child(" + (j+1) + ") td:nth-child(" + (i+1) + ")").hasClass("true");
+                        jsonObj["p" + d++] = istrue;
+                    }
+                }
+                jsonString = JSON.stringify(jsonObj);
+                $("textarea").val(jsonString);
+            });
+            $("textarea").change(function() {
+                jsonObj = JSON.parse($("textarea").val());
+                var d = 1; // day
+                for (var i=0; i<c; i++) {
+                    for(var j=0; j<r; j++) {
+                        if (jsonObj["p" + d++] == true) {
+                            $("table tr:nth-child(" + (j+1) + ") td:nth-child(" + (i+1) + ")").addClass("true");
+                        } else {
+                            $("table tr:nth-child(" + (j+1) + ") td:nth-child(" + (i+1) + ")").removeClass("true");
+                        }                         
                     }
                 }
             });
