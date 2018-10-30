@@ -8,10 +8,11 @@ def auth():
     'passw': ''
   }
 ```
-# docker
+# docker / cron
 
 ```console
-docker-compose -p hello-world up -d
+/usr/bin/docker build -t hello-world .
+/usr/bin/docker run -it --rm -v $(pwd):/app hello-world python -u app.py
 ```
 
 # draw
